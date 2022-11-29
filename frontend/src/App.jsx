@@ -1,8 +1,19 @@
 import React from "react";
-import "./styles/index.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import NavHorizontal from "./componants/nav/horizontal/NavHorizontal";
+import NavVertical from "./componants/nav/vertical/NavVertical";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <BrowserRouter>
+      <NavHorizontal />
+      <NavVertical />
+      <Routes>
+        <Route path="/user/:id" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

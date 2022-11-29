@@ -1,0 +1,24 @@
+.horizon {
+  height: 80px;
+  width: 100%;
+  background-color: var(--noir);
+}
+.horizon header {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.horizon img {
+  width: 178px;
+  height: 60.93px;
+  margin-left: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  color: var(--blanc);
+  font-size: 24px;
+  width: 70%;
+  margin-right: 70px;
+}
