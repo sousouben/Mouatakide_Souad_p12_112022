@@ -1,0 +1,75 @@
+.bonjour h1 {
+  font-size: 48px;
+  margin-bottom: 12px;
+  margin-top: 0px;
+}
+.bonjour p {
+  font-size: 18px;
+}
+.bonjour span {
+  color: #ff0000;
+}
+.pageHome {
+  width: 86%;
+  margin-top: -830px;
+  margin-left: 200px;
+}
+.calories,
+.proteines,
+.glucides,
+.lipides {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  background-color: var(--gris);
+  width: 100%;
+  height: 135px;
+  border-radius: 5px;
+}
+.calories img,
+.proteines img,
+.glucides img,
+.lipides img {
+  width: 80px;
+  height: 80px;
+  margin-left: 50px;
+}
+.iconDroite {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 40px;
+  width: 30%;
+  height: 630px;
+}
+.activity {
+  width: 835px;
+  height: 320px;
+  border-radius: 5px;
+  margin-top: 40px;
+  background-color: #fbfbfb;
+}
+
+.sessions,
+.performance,
+.score {
+  width: 258px;
+  height: 263px;
+  border-radius: 5px;
+  background-color: #fbfbfb;
+}
+
+.carre {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.horizonGauche {
+  width: 70%;
+}
+.graphiques {
+  display: flex;
+}
