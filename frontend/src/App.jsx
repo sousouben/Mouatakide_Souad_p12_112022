@@ -10,7 +10,7 @@ const App = () => {
       <NavHorizontal />
       <NavVertical />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/user/:id" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
