@@ -4,6 +4,10 @@ import proteines from "../assets/images/protein-icon.png";
 import glucides from "../assets/images/carbs-icon.png";
 import lipides from "../assets/images/fat-icon.png";
 import "./Home.css";
+import BarChart from "../componants/recharts/activity/BarChart";
+import RadarChart from "../componants/recharts/radars/RadarChart";
+import RadialBarChart from "../componants/recharts/score/RadialBarChart";
+import Session from "../componants/recharts/session/Session";
 
 function Home() {
   return (
@@ -18,13 +22,21 @@ function Home() {
 
       <div className="graphiques">
         <section className="horizonGauche">
-          <div className="activity"></div>
+          <div className="activity">
+            <BarChart />
+          </div>
           <div className="carre">
-            <div className="sessions"></div>
+            <div className="sessions">
+              <Session />
+            </div>
 
-            <div className="performance"></div>
+            <div className="performance">
+              <RadarChart />
+            </div>
 
-            <div className="score"></div>
+            <div className="score">
+              <RadialBarChart />
+            </div>
           </div>
         </section>
         <section className="iconDroite">
