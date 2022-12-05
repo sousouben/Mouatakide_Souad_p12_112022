@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import Profil from "./pages/profil/Profil";
 import NavHorizontal from "./componants/nav/horizontal/NavHorizontal";
-import NavVertical from "./componants/nav/vertical/NavVertical";
+import Home from "./pages/home/Home";
+import Error from "./pages/Error/Error";
 
 const App = () => {
   return (
     <BrowserRouter>
       <NavHorizontal />
-      <NavVertical />
       <Routes>
-        <Route path="/user/:id" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/user/:id" element={<Profil />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
