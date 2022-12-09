@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function radarChart() {
+function ActivityRadarChart() {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart
@@ -31,4 +31,4 @@ function radarChart() {
   );
 }
 
-export default radarChart;
+export default ActivityRadarChart;

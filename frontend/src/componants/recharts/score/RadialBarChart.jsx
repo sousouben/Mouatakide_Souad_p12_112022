@@ -6,7 +6,7 @@ import {
   PolarAngleAxis,
 } from "recharts";
 
-function radialBarChart() {
+function ActivityRadialBarChart() {
   return (
     <ResponsiveContainer>
       <RadialBarChart
@@ -87,4 +87,4 @@ function radialBarChart() {
   );
 }
 
-export default radialBarChart;
+export default ActivityRadialBarChart;

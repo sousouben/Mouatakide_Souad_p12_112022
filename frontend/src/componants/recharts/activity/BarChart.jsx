@@ -10,11 +10,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function barChart() {
+function ActivityBarChart({ userActivity }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        //data={}
+        data={userActivity}
         margin={{
           top: 80,
           right: 50,
@@ -79,4 +79,4 @@ function barChart() {
   );
 }
 
-export default barChart;
+export default ActivityBarChart;

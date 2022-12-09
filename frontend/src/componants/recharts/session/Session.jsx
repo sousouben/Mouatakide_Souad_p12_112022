@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 
-function session() {
+function ActivitySession() {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
@@ -38,4 +38,4 @@ function session() {
   );
 }
 
-export default session;
+export default ActivitySession;
