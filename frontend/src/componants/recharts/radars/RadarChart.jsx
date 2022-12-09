@@ -8,15 +8,37 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function ActivityRadarChart() {
+function perFormence(kind) {
+  switch (kind) {
+    case 1:
+      return "cardio";
+    case 2:
+      return "energy";
+    case 3:
+      return "endurance";
+    case 4:
+      return "strength";
+    case 5:
+      return "speed";
+    case 6:
+      return "intensity";
+    default:
+      return null;
+  }
+}
+
+function ActivityRadarChart({ userPerformance }) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer>
       <RadarChart
         margin={{ top: 30, right: 30, bottom: 30, left: 70 }}
         style={{ backgroundColor: "#282D30", borderRadius: "5px" }}
+        data={userPerformance}
       >
         <PolarGrid radialLines={false} />
         <PolarAngleAxis
+          dataKey="kind"
+          tickFormatter={perFormence}
           tickLine={false}
           axisLine={false}
           dy={5}

@@ -6,7 +6,13 @@ import {
   PolarAngleAxis,
 } from "recharts";
 
-function ActivityRadialBarChart() {
+function ActivityRadialBarChart({ userMain }) {
+  const data = [
+    {
+      uv: userMain,
+      fill: "#E60000",
+    },
+  ];
   return (
     <ResponsiveContainer>
       <RadialBarChart
@@ -17,6 +23,7 @@ function ActivityRadialBarChart() {
         height="100%"
         innerRadius={70}
         barSize={10}
+        data={data}
         startAngle={80}
         endAngle={450}
       >
@@ -31,13 +38,14 @@ function ActivityRadialBarChart() {
           tick={false}
         />
         <RadialBar
-          minAngle={15}
-          label={{ position: "insideStart", fill: "#fff" }}
           background
-          clockWise
           dataKey="uv"
+          angleAxisId={1}
+          fill="var(--red)"
+          cornerRadius="10"
+          data={[data[0]]}
         />
-
+        {/*concerne le marqueur rouge*/}
         <text
           className="scoreSize"
           fontWeight="700"
@@ -46,7 +54,7 @@ function ActivityRadialBarChart() {
           x="50%"
           y="45%"
           textAnchor="middle"
-        ></text>
+        >{`${userMain}%`}</text>
 
         <text
           className="graphTitle"
