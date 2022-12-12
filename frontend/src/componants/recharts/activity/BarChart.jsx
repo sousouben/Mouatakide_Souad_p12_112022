@@ -10,6 +10,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
+/**
+ *
+ * @param {boolean}  [Props.active='true']
+ * @param {array}   [Props.payload=[]]
+ * @returns {JSX.Element} an activ tooltip or null
+ */
 
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
@@ -124,7 +130,7 @@ function ActivityBarChart({ userActivity }) {
 
 //Proptypes
 ActivityBarChart.propTypes = {
-  activity: PropTypes.array.isRequired,
+  userActivity: PropTypes.array.isRequired,
 };
 
 export default ActivityBarChart;
