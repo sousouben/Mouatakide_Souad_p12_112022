@@ -5,6 +5,14 @@ import {
   ResponsiveContainer,
   PolarAngleAxis,
 } from "recharts";
+import PropTypes from "prop-types";
+
+/**
+ * Display of a user's score as a percentage
+ * @component
+ * @param {number} userMain/todayScore - datas scores
+ * @returns {JSX.Element}
+ */
 
 function ActivityRadialBarChart({ userMain }) {
   const data = [
@@ -94,5 +102,10 @@ function ActivityRadialBarChart({ userMain }) {
     </ResponsiveContainer>
   );
 }
+
+//Proptypes
+ActivityRadialBarChart.propTypes = {
+  userMain: PropTypes.number.isRequired,
+};
 
 export default ActivityRadialBarChart;

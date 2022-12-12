@@ -9,6 +9,17 @@ import {
   Tooltip,
   Rectangle,
 } from "recharts";
+import PropTypes from "prop-types";
+/**
+ * Component that create a custom tooltip on
+ * the chart, active when mouseover a chart element
+ * @param {object} props  Tooltip props
+ * @param {boolean} props.active mouseover or not
+ * @param {Object[]} props.payload tooltip payload
+ * @param {number} props.payload.value tooltip value
+ * @param {Object[]} pros.userSessions
+ * @returns {JSX.Element}
+ */
 
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
@@ -133,5 +144,18 @@ function ActivitySession({ userSessions }) {
     </ResponsiveContainer>
   );
 }
+
+//Proptypes
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number,
+    })
+  ),
+};
+ActivitySession.propTypes = {
+  userSessions: PropTypes.array.isRequired,
+};
 
 export default ActivitySession;

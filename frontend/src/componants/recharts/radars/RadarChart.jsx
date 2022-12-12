@@ -7,6 +7,14 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
+/**
+ * Display user's performances chart
+ * @component
+ * @param {object} kind
+ * @param {Array} userPerformance - array of performances datas
+ * @returns {JSX.Element} ActivityRadarChart component
+ */
 
 function perFormence(kind) {
   switch (kind) {
@@ -52,5 +60,10 @@ function ActivityRadarChart({ userPerformance }) {
     </ResponsiveContainer>
   );
 }
+
+//Proptypes
+ActivityRadarChart.propTypes = {
+  userPerformance: PropTypes.array.isRequired,
+};
 
 export default ActivityRadarChart;
