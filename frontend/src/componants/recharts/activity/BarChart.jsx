@@ -10,10 +10,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
+
 /**
  *
  * @param {boolean}  [Props.active='true']
  * @param {array}   [Props.payload=[]]
+ * @prop {Array}  userActivity Data from a user to BarChart
  * @returns {JSX.Element} an activ tooltip or null
  */
 
@@ -30,6 +32,10 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+const customTickDay = (day) => {
+  return Number(day.slice(8));
+};
+
 function ActivityBarChart({ userActivity }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -42,39 +48,44 @@ function ActivityBarChart({ userActivity }) {
           bottom: 20,
         }}
         barSize={7} //epaisseur de la barre
-        barGap={8} //espace entre chaque barre
+        barGap={6} //espace entre chaque barre
       >
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <CartesianGrid strokeDasharray="2 2" vertical={false} />
         <XAxis
-          dataKey="day"
+          dataKey={"day"}
+          axisLine={false}
+          domain={["dataMin + 1", "dataMax + 1"]}
           tickLine={false}
-          stroke=" #DEDEDE"
-          tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 14 }}
-          padding={{ left: -47, right: -48 }}
-          tickMargin={16}
+          tickFormatter={customTickDay}
         />
         {/*concerne les dates*/}
         <YAxis
-          tickLine={false}
           orientation="right"
+          interval={"preserveStartEnd"}
           axisLine={false}
-          tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 14 }}
-          tickMargin={45}
-          minTickGap={27}
+          allowDecimals={false}
+          dataKey={"kilogram"}
+          yAxisId={1}
+          domain={["dataMin - 10", "dataMax + 10"]}
         />
+        <YAxis hide dataKey={"calories"} />
         {/*concerne les valeurs y*/}
         <Tooltip
           content={<CustomTooltip />}
+          labelStyle={{
+            display: "none",
+          }}
           wrapperStyle={{
             color: "#FFF",
             background: "red",
             border: "none",
             outline: "none",
-            width: "70px",
-            height: "85px",
+            width: "50px",
+            height: "70px",
             textAlign: "center",
-            lineHeight: "2.5",
+            lineHeight: "1.5",
           }}
+          margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
         />
         {/*concerne le cadre rouge*/}
         <Legend
@@ -130,7 +141,13 @@ function ActivityBarChart({ userActivity }) {
 
 //Proptypes
 ActivityBarChart.propTypes = {
-  userActivity: PropTypes.array.isRequired,
+  userActivity: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number,
+    })
+  ),
 };
 
 export default ActivityBarChart;

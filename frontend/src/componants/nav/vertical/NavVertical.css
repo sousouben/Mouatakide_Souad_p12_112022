@@ -15,3 +15,14 @@
   margin-top: 200px;
   margin-bottom: 164px;
 }
+
+Button {
+  border-radius: 6px;
+  background-color: black;
+}
+
+Button:hover {
+  background-color: red;
+  box-shadow: 0px 0px 6px 3px red;
+  border: none;
+}

@@ -15,10 +15,18 @@
   margin-left: 20px;
 }
 nav {
-  display: flex;
-  justify-content: space-between;
-  color: var(--blanc);
+  font-weight: 500;
   font-size: 24px;
-  width: 70%;
-  margin-right: 70px;
+  width: 80%;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.navLink {
+  text-decoration: none;
+  color: white;
+  list-style: none;
 }
