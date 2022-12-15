@@ -1,43 +1,33 @@
-import axios from "axios";
+import { ActivityData } from "../classModel/classActivityData";
+import { MainData } from "../classModel/ClassMainData";
+import { AverageSessionsData } from "../classModel/classAverageSessionsData";
+import { PerformanceData } from "../classModel/classPerformanceData";
 
-export const getUserMainData = async (id) => {
-  try {
-    const response = await axios.get(`http://localhost:3000/user/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log("error " + error);
+const url = "http://localhost:3000/user";
+
+console.log(url);
+
+const getData = async (id, categorie) => {
+  let urlDemande = categorie ? url + `/${id}/${categorie}/` : url + `/${id}/`;
+  console.log(urlDemande);
+
+  const data = await fetch(urlDemande);
+  console.log(data);
+
+  const dataFetch = await data.json();
+  console.log(dataFetch);
+
+  switch (categorie) {
+    case "activity":
+      return new ActivityData(dataFetch.data);
+    case "average-sessions":
+      return new AverageSessionsData(dataFetch.data);
+    case "performance":
+      return new PerformanceData(dataFetch.data);
+
+    default:
+      return new MainData(dataFetch.data);
   }
 };
 
-export const getUserActivity = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3000/user/${id}/activity`
-    );
-    return response.data;
-  } catch (error) {
-    console.log("error " + error);
-  }
-};
-
-export const getUserAverageSessions = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3000/user/${id}/average-sessions`
-    );
-    return response.data;
-  } catch (error) {
-    console.log("error " + error);
-  }
-};
-
-export const getUserPerformance = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3000/user/${id}/performance`
-    );
-    return response.data;
-  } catch (error) {
-    console.log("error " + error);
-  }
-};
+export default getData;

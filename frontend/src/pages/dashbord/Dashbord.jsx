@@ -14,8 +14,8 @@ import NavVertical from "../../componants/nav/vertical/NavVertical";
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import dataUser from "../../services/api/ApiMock";
-//import dataUser from "../../services/api/callApi";
+//import dataUser from "../../services/api/ApiMock";
+import dataUser from "../../services/api/callApi";
 
 function Profil() {
   const { id } = useParams();
