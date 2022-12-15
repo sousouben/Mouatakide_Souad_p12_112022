@@ -33,10 +33,17 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const customTickDay = (day) => {
+  console.log(day);
   return Number(day.slice(8));
 };
 
+const customTickKg = (kilogram) => {
+  console.log(kilogram);
+  return kilogram;
+};
+
 function ActivityBarChart({ userActivity }) {
+  console.log(userActivity);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -60,15 +67,24 @@ function ActivityBarChart({ userActivity }) {
         />
         {/*concerne les dates*/}
         <YAxis
+          hide
+          tickLine={false}
           orientation="right"
           interval={"preserveStartEnd"}
           axisLine={false}
           allowDecimals={false}
           dataKey={"kilogram"}
           yAxisId={1}
-          domain={["dataMin - 10", "dataMax + 10"]}
+          domain={["dataMin + 1", "dataMax + 1"]}
+          tickFormatter={customTickKg}
         />
-        <YAxis hide dataKey={"calories"} />
+        <YAxis
+          dataKey={"calories"}
+          tickFormatter={customTickKg}
+          orientation="right"
+          axisLine={false}
+          tickLine={false}
+        />
         {/*concerne les valeurs y*/}
         <Tooltip
           content={<CustomTooltip />}
