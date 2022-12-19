@@ -18,16 +18,19 @@ import { useState, useEffect } from "react";
 import dataUser from "../../services/api/callApi";
 
 function Profil() {
-  const { id } = useParams();
+  const { id } = useParams(); //useParams pour obtenir le paramètre id de l'URL.
+  //useState créer des variables d'état qui seront utilisées pour stocker des données sur l'utilisateur, son activité, ses sessions et ses performances.
   const [userMain, setUserMain] = useState();
   const [userActivity, setUserActivity] = useState();
   const [userSessions, setUserSessions] = useState();
   const [userPerformance, setUserPerformance] = useState();
 
   useEffect(() => {
+    //useEffect appele la fonction dataUser avec l'identifiant de l'utilisateur et récupérer des données sur l'utilisateur, son activité, ses sessions et ses performances.
     dataUser(id)
       .then((data) => {
         if (typeof data !== "undefined") {
+          //Ces données sont ensuite stockées dans les variables d'état respectives à l'aide des fonctions setUserMain, setUserActivity, setUserSessions et setUserPerformance.
           setUserMain(data);
 
           dataUser(id, "activity")
@@ -50,6 +53,7 @@ function Profil() {
     return null;
   }
 
+  //Le message d'accueil  renderSalut() est déterminé par l'heure actuelle de la journée hourOfTheDa(), avec un message différent affiché pour le soir et le matin.
   function hourOfTheDay() {
     return new Date().getHours();
   }

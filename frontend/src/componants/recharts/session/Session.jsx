@@ -22,14 +22,17 @@ import PropTypes from "prop-types";
  */
 
 const CustomTooltip = ({ active, payload }) => {
+  //active est un booléen qui détermine si l'info-bulle doit être affichée ou non.
+  //payload tableau d'objets de données contenant les valeurs à afficher dans l'info-bulle.
   if (active) {
     return (
       <div className="customTooltipSession">
         <p className="tooltipDataSession">{`${payload[0].value} `}min</p>
+        {/*affiche la valeur du premier objet du tableau, suivie de la chaîne "min".*/}
       </div>
     );
   }
-  return null;
+  return null; //le composant renverra null et l'info-bulle ne s'affichera pas.
 };
 
 const CustomCursor = ({ points }) => {

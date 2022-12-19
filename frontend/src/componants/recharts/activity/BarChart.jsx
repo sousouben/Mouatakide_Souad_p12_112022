@@ -34,8 +34,9 @@ const CustomTooltip = ({ active, payload }) => {
 
 const customTickDay = (day) => {
   console.log(day);
-  return Number(day.slice(8));
+  return Number(day.slice(8)); //méthode slice() pour extraire les deux derniers caractères de la chaîne day et Number() est utilisée pour convertir la chaîne extraite en nombre.
 };
+//Par exemple, si l'argument du jour est la chaîne "2022-12-19", la fonction enregistrera "19" sur la console et renverra le nombre 19.
 
 const customTickKg = (kilogram) => {
   console.log(kilogram);
@@ -43,10 +44,12 @@ const customTickKg = (kilogram) => {
 };
 
 function ActivityBarChart({ userActivity }) {
+  //prop userActivity est un tableau d'objets avec les propriétés jour, kilogramme et calories.
   console.log(userActivity);
   return (
+    //ResponsiveContainer de recharts est utilisé pour rendre le graphique réactif à la taille du conteneur dans lequel il est rendu.
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart
+      <BarChart //graphique à barres
         data={userActivity}
         margin={{
           top: 80,
@@ -58,7 +61,7 @@ function ActivityBarChart({ userActivity }) {
         barGap={6} //espace entre chaque barre
       >
         <CartesianGrid strokeDasharray="2 2" vertical={false} />
-        <XAxis
+        <XAxis //axe des x
           dataKey={"day"}
           axisLine={false}
           domain={["dataMin + 1", "dataMax + 1"]}
@@ -66,7 +69,7 @@ function ActivityBarChart({ userActivity }) {
           tickFormatter={customTickDay}
         />
         {/*concerne les dates*/}
-        <YAxis
+        <YAxis //axe des y
           hide
           tickLine={false}
           orientation="right"
@@ -103,7 +106,7 @@ function ActivityBarChart({ userActivity }) {
           }}
           margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
         />
-        {/*concerne le cadre rouge*/}
+        {/*CustomTooltip est utilisé pour personnaliser l'apparence de l'info-bulle qui apparaît lors du survol d'une barre dans le graphique.*/}
         <Legend
           className="activityLegend"
           verticalAlign="top"

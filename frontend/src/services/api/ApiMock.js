@@ -11,8 +11,9 @@ import {
 } from "../../mocks/data";
 
 function getUserMainData(id) {
-  const data = USER_MAIN_DATA.find((value) => value.id.toString() === id);
-  const userMain = new MainData(data);
+  const data = USER_MAIN_DATA.find((value) => value.id.toString() === id); //rechercher dans le tableau USER_MAIN_DATA un objet avec un ID correspondant.
+  //convertit l'id de chaque objet du tableau USER_MAIN_DATA en une chaîne à l'aide de la méthode toString()
+  const userMain = new MainData(data); //crée un nouvel objet MainData en utilisant les données de l'objet correspondant et le renvoie.
   return userMain;
 }
 
@@ -36,6 +37,7 @@ function getUserPerformance(id) {
 }
 
 const getData = async (id, categorie) => {
+  //async renvoie une promesse
   switch (categorie) {
     case "activity":
       return getUserActivity(id);

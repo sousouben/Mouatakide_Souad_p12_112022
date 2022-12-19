@@ -36,14 +36,16 @@ function perFormence(kind) {
 }
 
 function ActivityRadarChart({ userPerformance }) {
+  //prop userPerformance tableau d'objets représentant les données du graphique.
   return (
     <ResponsiveContainer>
-      <RadarChart
+      <RadarChart //graphique radar
         margin={{ top: 30, right: 30, bottom: 30, left: 70 }}
-        style={{ backgroundColor: "#282D30", borderRadius: "5px" }}
+        style={{ backgroundColor: "#282D30", borderRadius: "5px" }} //couleur d'arrière-plan et le rayon de la bordure du graphique
         data={userPerformance}
       >
         <PolarGrid radialLines={false} />
+        {/*dessine des lignes de grille*/}
         <PolarAngleAxis
           dataKey="kind"
           tickFormatter={perFormence}
@@ -53,6 +55,7 @@ function ActivityRadarChart({ userPerformance }) {
           stroke="#FFF"
           tick={{ fill: "#FFFFFF", fontSize: 12 }}
         />
+        {/*dessiner les axes du graphique*/}
 
         <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
         <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
