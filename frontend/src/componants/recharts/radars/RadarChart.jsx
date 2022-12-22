@@ -8,14 +8,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
-/**
- * Display user's performances chart
- * @component
- * @param {object} kind
- * @param {Array} userPerformance - array of performances datas
- * @returns {JSX.Element} ActivityRadarChart component
- */
 
+/**
+ * [perFormence is a function that returns a string based on a number]
+ * @param {number} kind
+ * @returns {string} a string corresponding to the number
+ */
 function perFormence(kind) {
   switch (kind) {
     case 1:
@@ -35,6 +33,11 @@ function perFormence(kind) {
   }
 }
 
+/**
+ * Renders a radar chart showing user performance data.
+ * @param {Object[]} userPerformance - An array of objects representing the data for the chart.
+ * @returns {React.ReactElement} A radar chart.
+ */
 function ActivityRadarChart({ userPerformance }) {
   //prop userPerformance tableau d'objets représentant les données du graphique.
   return (
@@ -66,7 +69,12 @@ function ActivityRadarChart({ userPerformance }) {
 
 //Proptypes
 ActivityRadarChart.propTypes = {
-  userPerformance: PropTypes.array.isRequired,
+  userPerformance: PropTypes.arrayOf(
+    PropTypes.shape({
+      kind: PropTypes.number.isRequired,
+      value: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ActivityRadarChart;

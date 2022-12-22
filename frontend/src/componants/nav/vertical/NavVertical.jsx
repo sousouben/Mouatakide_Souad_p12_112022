@@ -6,6 +6,7 @@ import natation from "../../../assets/images/natation.png";
 import velo from "../../../assets/images/velo.png";
 import altere from "../../../assets/images/alteres.png";
 import copy from "../../../assets/images/copiryght.png";
+import PropTypes from "prop-types";
 
 /**
  * Vertical navigation component
@@ -53,4 +54,10 @@ function NavVertical() {
   );
 }
 
+NavVertical.propTypes = {
+  handleGetMeditationData: PropTypes.func,
+  handleGetNatationData: PropTypes.func,
+  handleGetCyclismeData: PropTypes.func,
+  handleGetMusculationData: PropTypes.func,
+};
 export default NavVertical;

@@ -8,12 +8,10 @@ import {
 import PropTypes from "prop-types";
 
 /**
- * Display of a user's score as a percentage
- * @component
- * @param {number} userMain/todayScore - datas scores
- * @returns {JSX.Element}
+ * [ActivityRadialBarChart is a function that returns a radial bar chart, polar angle axis, radial bar, and texts]
+ * @param {Object} userMain the user's score to display on the chart
+ * @returns {React.ReactElement} A radial bar chart
  */
-
 function ActivityRadialBarChart({ userMain }) {
   const data = [
     {
@@ -107,5 +105,4 @@ function ActivityRadialBarChart({ userMain }) {
 ActivityRadialBarChart.propTypes = {
   userMain: PropTypes.number.isRequired,
 };
-
 export default ActivityRadialBarChart;

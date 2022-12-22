@@ -2,14 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
- * It's a function that returns a list item with a button inside of it. The button has an image inside
- * of it corresponding to a micronutrient.
- * @prop   {String}  srcImg  Parameter src of the img Tag
- * @prop   {String}  launch  Button trigger, activates a function in its parent.
- *
- * @return  {React.ReactElement}A React component.
+ * @function Button
+ * @param {object} srcImg - Image source for the button.
+ * @param {function} launch - Function to be called when the button is clicked.
+ * @return {JSX} - JSX representation of a button element with an image.
  */
-
 const Button = ({ srcImg, launch }) => {
   return (
     <li

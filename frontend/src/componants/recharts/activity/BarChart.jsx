@@ -11,9 +11,15 @@ import {
 } from "recharts";
 import PropTypes from "prop-types";
 
+/**
+ * CustomTooltip is a function that returns a red frame with the data contained in it
+ * @param {Object} props containing active and payload
+ * @param {boolean} active indicates whether the tooltip should be displayed or not
+ * @param {array} payload an array of data objects containing the values to be displayed in the tooltip
+ * @returns {React.ReactElement} A custom tooltip
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
-    //lorsqu'on est sur une barre une légende apparait dans un cadre rouge
     return (
       <div className="customTooltip">
         <p className="tooltipData">{`${payload[0].value} `}g</p>
@@ -24,29 +30,36 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+/**
+ * customTickDay is a function that returns the last two characters of the day string as a number
+ * @param {string} day - a string representing a day
+ * @returns {number} the last two characters of the day string as a number
+ */
 const customTickDay = (day) => {
   console.log(day);
   return Number(day.slice(8)); //méthode slice() pour extraire les deux derniers caractères de la chaîne day et Number() est utilisée pour convertir la chaîne extraite en nombre.
 };
 //Par exemple, si l'argument du jour est la chaîne "2022-12-19", la fonction enregistrera "19" sur la console et renverra le nombre 19.
 
+/**
+ * [customTickKg is a function that returns a custom tick for the y-axis of a bar chart]
+ * @param {number} kilogram
+ * @returns {number} The custom tick
+ */
 const customTickKg = (kilogram) => {
   console.log(kilogram);
   return kilogram;
 };
 
 /**
- * [ActivityBarChart is a function that takes an array of objects as a prop and returns a bar chart]
- * @prop   {Array}  userActivity  Data from a user to BarChart
- *
- * @return  {React.ReactElement} Bar Chart
+ * Activity bar chart component.
+ * @param {array} userActivity - An array of objects representing the data for the chart. Each object has properties for day, kilogram, and calories.
+ * @returns {JSX.Element} A bar chart displaying the user's daily activity.
  *
  */
 function ActivityBarChart({ userActivity }) {
-  //prop userActivity est un tableau d'objets avec les propriétés jour, kilogramme et calories.
   console.log(userActivity);
   return (
-    //ResponsiveContainer de recharts est utilisé pour rendre le graphique réactif à la taille du conteneur dans lequel il est rendu.
     <ResponsiveContainer width="100%" height="100%">
       <BarChart //graphique à barres
         data={userActivity}
@@ -161,11 +174,11 @@ function ActivityBarChart({ userActivity }) {
 ActivityBarChart.propTypes = {
   userActivity: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.string,
-      kilogram: PropTypes.number,
-      calories: PropTypes.number,
+      day: PropTypes.string.isRequired,
+      kilogram: PropTypes.number.isRequired,
+      calories: PropTypes.number.isRequired,
     })
-  ),
+  ).isRequired,
 };
 
 export default ActivityBarChart;

@@ -45,8 +45,8 @@ const CustomCursor = ({ points }) => {
 
 /**
  * [daySemaine is a function which generates the days of the week]
- * @param {string} day
- * @returns days of the week
+ * @param {number} day - A number representing the day of the week (1 for Monday, 2 for Tuesday, etc.)
+ * @returns {string} A string representation of the day of the week (L for Monday, M for Tuesday, etc.)
  */
 function daySemaine(day) {
   switch (day) {
@@ -66,14 +66,14 @@ function daySemaine(day) {
       return "D";
 
     default:
-      return null;
+      throw new Error("Numéro du jour incorrect");
   }
 }
 
 /**
- * [ActivitySession is a function that returns a line graph, line, y-axis, x-axis, and tooltip]
- * @prop {Object} userSessionsData from a user to LineChart
- * @returns {React.ReactElement} A graph line chart
+ * @function ActivitySession
+ * @param {Object} userSessions - An object containing user session data
+ * @returns {React.ReactElement} A line chart displaying user session data
  */
 function ActivitySession({ userSessions }) {
   return (
@@ -156,16 +156,8 @@ function ActivitySession({ userSessions }) {
 }
 
 //Proptypes
-CustomTooltip.propTypes = {
-  active: PropTypes.bool,
-  payload: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number,
-    })
-  ),
-};
 ActivitySession.propTypes = {
-  userSessions: PropTypes.array.isRequired,
+  userSessions: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ActivitySession;

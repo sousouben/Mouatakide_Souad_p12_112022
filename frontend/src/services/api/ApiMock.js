@@ -2,6 +2,7 @@ import { ActivityData } from "../classModel/classActivityData";
 import { MainData } from "../classModel/ClassMainData";
 import { AverageSessionsData } from "../classModel/classAverageSessionsData";
 import { PerformanceData } from "../classModel/classPerformanceData";
+import PropTypes from "prop-types";
 
 import {
   USER_MAIN_DATA,
@@ -81,6 +82,11 @@ const getData = async (id, categorie) => {
     default:
       return getUserMainData(id);
   }
+};
+
+getData.propTypes = {
+  id: PropTypes.number.isRequired,
+  categorie: PropTypes.string,
 };
 
 export default getData;

@@ -2,6 +2,7 @@ import { ActivityData } from "../classModel/classActivityData";
 import { MainData } from "../classModel/ClassMainData";
 import { AverageSessionsData } from "../classModel/classAverageSessionsData";
 import { PerformanceData } from "../classModel/classPerformanceData";
+import PropTypes from "prop-types";
 
 const url = "http://localhost:3000/user";
 console.log(url);
@@ -41,6 +42,11 @@ const getData = async (id, categorie) => {
     default:
       return new MainData(dataFetch.data); //Si aucune des instructions case ne correspond, la fonction renvoie un nouvel objet MainData.
   }
+};
+
+getData.propTypes = {
+  id: PropTypes.number.isRequired,
+  categorie: PropTypes.string,
 };
 
 export default getData;

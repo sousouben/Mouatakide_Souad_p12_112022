@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 /**
  * [ActivityData Represents data for a user's activity.]
  *
@@ -25,5 +27,17 @@ class ActivityData {
     this.calorie = data.sessions.calories; //le nombre de calories brûlées par l'utilisateur
   }
 }
+
+ActivityData.propTypes = {
+  id: PropTypes.number.isRequired,
+  sessions: PropTypes.shape({
+    day: PropTypes.number.isRequired,
+    kilogram: PropTypes.number.isRequired,
+    calories: PropTypes.number.isRequired,
+  }).isRequired,
+  day: PropTypes.number.isRequired,
+  kilo: PropTypes.number.isRequired,
+  calorie: PropTypes.number.isRequired,
+};
 
 export { ActivityData };

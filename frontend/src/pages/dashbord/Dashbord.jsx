@@ -17,6 +17,8 @@ import NavVertical from "../../componants/nav/vertical/NavVertical";
 //import dataUser from "../../services/api/ApiMock";
 import dataUser from "../../services/api/callApi";
 
+import PropTypes from "prop-types";
+
 function Profil() {
   const { id } = useParams(); //useParams permet d'obtenir le paramètre id de l'URL.
   const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
@@ -156,5 +158,14 @@ function Profil() {
     </>
   );
 }
+
+Profil.propTypes = {
+  id: PropTypes.number.isRequired, // id est un nombre requis
+  categorie: PropTypes.string, // categorie est une chaîne de caractères (optionnelle)
+  userMain: PropTypes.object.isRequired, // userMain est un objet requis
+  userActivity: PropTypes.array.isRequired, // userActivity est un tableau requis d'objets
+  userSessions: PropTypes.array.isRequired, // userSessions est un tableau requis d'objets
+  userPerformance: PropTypes.array.isRequired, // userPerformance est un tableau requis d'objets
+};
 
 export default Profil;
