@@ -5,7 +5,7 @@ import { PerformanceData } from "../classModel/classPerformanceData";
 import PropTypes from "prop-types";
 
 const url = "http://localhost:3000/user";
-console.log(url);
+//console.log(url);
 
 //Ce code définit une fonction appelée getData qui envoie une requête HTTP à une URL spécifiée par la variable url.
 //La fonction prend deux arguments : id et categorie.

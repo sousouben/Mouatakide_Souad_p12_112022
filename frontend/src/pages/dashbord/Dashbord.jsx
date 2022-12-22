@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 //styles css
 import "./Dashbord.css";
 //icones
@@ -20,56 +20,98 @@ import dataUser from "../../services/api/ApiMock";
 import PropTypes from "prop-types";
 
 function Profil() {
-  const { id } = useParams();
-  console.log(id); //useParams permet d'obtenir le paramètre id de l'URL.
+  const { id } = useParams(); //useParams permet d'obtenir le paramètre id de l'URL.
   const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
   //useState créer des variables d'état qui seront utilisées pour stocker des données sur l'utilisateur, son activité, ses sessions et ses performances.
   const [userMain, setUserMain] = useState();
   const [userActivity, setUserActivity] = useState();
   const [userSessions, setUserSessions] = useState();
   const [userPerformance, setUserPerformance] = useState();
+  const navigate = useNavigate();
 
   /**
+   * Fetches user data and stores it in state variables.
    *
-   * [handleError Function that handles errors returned by the dataUser function]
-   * @param {Error} error - The error returned by dataUser
+   * @param {number} id - The user's ID.
+   * @param {string} categorie - The category of data to retrieve (optional).
+   * @param {function} navigate - A function for navigating to a different page.
    */
-  function handleError(error) {
-    console.log("erreur données id", error);
-    return <Navigate to="/Error"></Navigate>;
-  }
   useEffect(() => {
-    //useEffect appele la fonction dataUser avec l'identifiant de l'utilisateur et récupérer des données sur l'utilisateur, son activité, ses sessions et ses performances.
-    dataUser(id)
-      /**
-       * [dataUser Function that allows retrieving user data with user id]
-       * @param {number} id - User ID
-       * @param {string} categorie - The category of data to recover (optional)
-       * @return {Promise} A promise that resolves with user data or rejects with an error on failure
-       */
-      .then((data) => {
-        if (typeof data !== "undefined") {
-          //Ces données sont ensuite stockées dans les variables d'état respectives à l'aide des fonctions setUserMain, setUserActivity, setUserSessions et setUserPerformance.
-          setUserMain(data);
+    const fetchData = () => {
+      try {
+        if (id === "12" || id === "18") {
+          dataUser(id)
+            .then((data) => {
+              if (typeof data !== "undefined") {
+                try {
+                  setUserMain(data);
+                } catch (error) {
+                  console.log(
+                    "Erreur des données principales de l'utilisateur:",
+                    error
+                  );
+                }
 
-          dataUser(id, "activity")
-            .then((data) => setUserActivity(data))
-            .catch((error) => console.log("erreur activity", error));
+                dataUser(id, "activity")
+                  .then((data) => {
+                    try {
+                      setUserActivity(data);
+                    } catch (error) {
+                      console.log(
+                        "Erreur des données d'activité de l'utilisateur:",
+                        error
+                      );
+                    }
+                  })
+                  .catch((error) =>
+                    console.log("Erreur des données d'activité:", error)
+                  );
 
-          dataUser(id, "average-sessions")
-            .then((data) => setUserSessions(data))
-            .catch((error) => console.log("erreur sessions", error));
+                dataUser(id, "average-sessions")
+                  .then((data) => {
+                    try {
+                      setUserSessions(data);
+                    } catch (error) {
+                      console.log(
+                        "Erreur des données des sessions utilisateur:",
+                        error
+                      );
+                    }
+                  })
+                  .catch((error) =>
+                    console.log("Erreur des données des sessions:", error)
+                  );
 
-          dataUser(id, "performance")
-            .then((data) => setUserPerformance(data))
-            .catch((error) => console.log("erreur performance", error));
+                dataUser(id, "performance")
+                  .then((data) => {
+                    try {
+                      setUserPerformance(data);
+                    } catch (error) {
+                      console.log(
+                        "Erreur des données de performances de l'utilisateur:",
+                        error
+                      );
+                    }
+                  })
+                  .catch((error) =>
+                    console.log("Erreur des données de performances:", error)
+                  );
+              }
+            })
+            .catch((error) =>
+              console.log("Erreur des données utilisateur:", error)
+            );
         } else {
-          console.log(id);
-          return <Navigate to="/Error"></Navigate>;
+          navigate("/error");
         }
-      })
-      .catch((error) => handleError(error));
-  }, [id, categorie]); //récupérer les données de l'utilisateur
+      } catch (error) {
+        console.log("Erreur lors de la récupération des données:", error);
+        navigate("/error");
+      }
+    };
+
+    fetchData();
+  }, [id, categorie, navigate]);
 
   if (!userMain || !userActivity || !userSessions || !userPerformance) {
     return null;

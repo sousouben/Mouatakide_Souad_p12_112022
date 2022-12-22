@@ -36,7 +36,7 @@ const CustomTooltip = ({ active, payload }) => {
  * @returns {number} the last two characters of the day string as a number
  */
 const customTickDay = (day) => {
-  console.log(day);
+  //console.log(day);
   return Number(day.slice(8)); //méthode slice() pour extraire les deux derniers caractères de la chaîne day et Number() est utilisée pour convertir la chaîne extraite en nombre.
 };
 //Par exemple, si l'argument du jour est la chaîne "2022-12-19", la fonction enregistrera "19" sur la console et renverra le nombre 19.
@@ -47,7 +47,7 @@ const customTickDay = (day) => {
  * @returns {number} The custom tick
  */
 const customTickKg = (kilogram) => {
-  console.log(kilogram);
+  //console.log(kilogram);
   return kilogram;
 };
 
@@ -58,7 +58,7 @@ const customTickKg = (kilogram) => {
  *
  */
 function ActivityBarChart({ userActivity }) {
-  console.log(userActivity);
+  //console.log(userActivity);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart //graphique à barres
