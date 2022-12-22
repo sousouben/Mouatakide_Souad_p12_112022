@@ -10,20 +10,16 @@ import {
   Rectangle,
 } from "recharts";
 import PropTypes from "prop-types";
-/**
- * Component that create a custom tooltip on
- * the chart, active when mouseover a chart element
- * @param {object} props  Tooltip props
- * @param {boolean} props.active mouseover or not
- * @param {Object[]} props.payload tooltip payload
- * @param {number} props.payload.value tooltip value
- * @param {Object[]} pros.userSessions
- * @returns {JSX.Element}
- */
 
+/**
+ * [CustomTooltip Custom tooltip component]
+ *
+ * @param {Object} props Component properties
+ * @param {Boolean} props.active Boolean that determines if the tooltip should be displayed or not
+ * @param {Object[]} props.payload Array of data objects containing the values ​​to display in the tooltip
+ * @returns {JSX.Element} The custom tooltip component
+ */
 const CustomTooltip = ({ active, payload }) => {
-  //active est un booléen qui détermine si l'info-bulle doit être affichée ou non.
-  //payload tableau d'objets de données contenant les valeurs à afficher dans l'info-bulle.
   if (active) {
     return (
       <div className="customTooltipSession">
@@ -32,7 +28,7 @@ const CustomTooltip = ({ active, payload }) => {
       </div>
     );
   }
-  return null; //le composant renverra null et l'info-bulle ne s'affichera pas.
+  return null;
 };
 
 const CustomCursor = ({ points }) => {
@@ -46,6 +42,12 @@ const CustomCursor = ({ points }) => {
     />
   );
 };
+
+/**
+ * [daySemaine is a function which generates the days of the week]
+ * @param {string} day
+ * @returns days of the week
+ */
 function daySemaine(day) {
   switch (day) {
     case 1:
@@ -68,6 +70,11 @@ function daySemaine(day) {
   }
 }
 
+/**
+ * [ActivitySession is a function that returns a line graph, line, y-axis, x-axis, and tooltip]
+ * @prop {Object} userSessionsData from a user to LineChart
+ * @returns {React.ReactElement} A graph line chart
+ */
 function ActivitySession({ userSessions }) {
   return (
     <ResponsiveContainer>

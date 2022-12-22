@@ -5,27 +5,38 @@ import { PerformanceData } from "../classModel/classPerformanceData";
 
 const url = "http://localhost:3000/user";
 console.log(url);
+
 //Ce code définit une fonction appelée getData qui envoie une requête HTTP à une URL spécifiée par la variable url.
 //La fonction prend deux arguments : id et categorie.
+
+/**
+ * [getData Retrieves data for a user based on the specified ID and category.]
+ *
+ * @param {number} id - The ID of the user whose data should be retrieved.
+ * @param {string} categorie - The category of data to retrieve.
+ * @returns {Promise} A promise that resolves with the data for the user.
+ */
 const getData = async (id, categorie) => {
-  let urlDemande = categorie ? url + `/${id}/${categorie}/` : url + `/${id}/`;
+  //Créez l'URL de la demande en fonction de l'ID et de la catégorie spécifiés.
+  let urlDemande = categorie ? `${url}/${id}/${categorie}/` : `${url}/${id}/`;
+
   console.log(urlDemande);
 
-  const data = await fetch(urlDemande); //await est utilisé pour attendre la réponse du serveur avant de continuer.
+  const data = await fetch(urlDemande); //Récupérez les données de l'API.
   console.log(data);
 
-  const dataFetch = await data.json(); //Une fois la réponse reçue, la fonction appelle la méthode json() sur l'objet de réponse pour analyser la réponse au format JSON, puis stocke le résultat dans la variable dataFetch.
+  const dataFetch = await data.json(); //Analysez la réponse au format JSON.
   console.log(dataFetch);
 
   switch (
-    categorie //switch pour déterminer le type d'objet de données à renvoyer, en fonction de la valeur de l'argument categorie.
+    categorie //Déterminez le type d'objet de données à renvoyer en fonction de la catégorie.
   ) {
     case "activity":
-      return new ActivityData(dataFetch.data); //la fonction renvoie un nouvel objet ActivityData
+      return new ActivityData(dataFetch.data);
     case "average-sessions":
-      return new AverageSessionsData(dataFetch.data); //la fonction renvoie un nouvel objet AverageSessionsData
+      return new AverageSessionsData(dataFetch.data);
     case "performance":
-      return new PerformanceData(dataFetch.data); //la fonction renvoie un nouvel objet PerformanceData
+      return new PerformanceData(dataFetch.data);
 
     default:
       return new MainData(dataFetch.data); //Si aucune des instructions case ne correspond, la fonction renvoie un nouvel objet MainData.

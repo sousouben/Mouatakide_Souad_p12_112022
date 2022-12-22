@@ -8,6 +8,11 @@ import Profil from "./pages/profil/Profil";
 import Reglage from "./pages/reglage/Reglage";
 import Communaute from "./pages/communaute/Communaute";
 
+/**
+ * Main component of the application that manages the routing of the different pages
+ *
+ * @returns {JSX.Element} The router component
+ */
 const App = () => {
   return (
     <BrowserRouter>

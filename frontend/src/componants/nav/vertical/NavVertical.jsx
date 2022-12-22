@@ -7,16 +7,36 @@ import velo from "../../../assets/images/velo.png";
 import altere from "../../../assets/images/alteres.png";
 import copy from "../../../assets/images/copiryght.png";
 
+/**
+ * Vertical navigation component
+ *
+ * @returns {JSX.Element} The vertical navigation component
+ */
 function NavVertical() {
+  /**
+   * Meditation data management function
+   */
   const handleGetMeditationData = () => {
     console.log("yoga");
   };
+
+  /**
+   * Swimming data management function
+   */
   function handleGetNatationData() {
     console.log("natation");
   }
+
+  /**
+   * Cycling data management function
+   */
   function handleGetCyclismeData() {
     console.log("velo");
   }
+
+  /**
+   * Bodybuilding data management function
+   */
   function handleGetMusculationData() {
     console.log("altere");
   }

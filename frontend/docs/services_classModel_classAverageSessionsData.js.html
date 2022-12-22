@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/classModel/classAverageSessionsData.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,45 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/classModel/classAverageSessionsData.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * [AverageSessionsData Represents data for a user's average session length.]
+ *
+ * @class
+ * @property {number} id - The user's ID.
+ * @property {object} sessions - An object containing the user's session data, including the number of days and the average session length.
+ * @property {number} day - The number of days of activity for the user.
+ * @property {number} session - The average session length for the user.
+ */
+class AverageSessionsData {
+  /**
+   * Creates a new AverageSessionsData object.
+   *
+   * @constructor
+   * @param {object} data - An object containing the user's average session data.
+   * @param {number} data.userId - The user's ID.
+   * @param {object} data.sessions - An object containing the user's session data, including the number of days and the average session length.
+   */
+  constructor(data) {
+    this.id = data.userId;
+    this.sessions = data.sessions;
+    this.day = data.sessions.day;
+    this.session = data.sessions.sessionLength;
+  }
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export { AverageSessionsData };
+</code></pre>
+        </article>
+    </section>
 
 
 

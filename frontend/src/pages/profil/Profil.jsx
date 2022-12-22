@@ -7,10 +7,10 @@ const Profil = () => {
   return (
     <main className="reglage_img">
       <Link to="user/12" style={{ marginRight: "20px" }}>
-        <img src={karl} alt="" />
+        <img src={karl} alt="Image de profile de Karl" />
       </Link>
       <Link to="user/18">
-        <img src={cecilia} alt="" />
+        <img src={cecilia} alt="Image de profile de Cécilia" />
       </Link>
     </main>
   );

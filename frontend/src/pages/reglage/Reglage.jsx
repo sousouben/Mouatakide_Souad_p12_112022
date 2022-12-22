@@ -5,7 +5,7 @@ import "./reglage.css";
 const Reglage = () => {
   return (
     <main className="reglage_img">
-      <img src={reglage} alt="" />
+      <img src={reglage} alt="Image de la page réglage" />
     </main>
   );
 };

@@ -11,14 +11,6 @@ import {
 } from "recharts";
 import PropTypes from "prop-types";
 
-/**
- *
- * @param {boolean}  [Props.active='true']
- * @param {array}   [Props.payload=[]]
- * @prop {Array}  userActivity Data from a user to BarChart
- * @returns {JSX.Element} an activ tooltip or null
- */
-
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
     //lorsqu'on est sur une barre une légende apparait dans un cadre rouge
@@ -43,6 +35,13 @@ const customTickKg = (kilogram) => {
   return kilogram;
 };
 
+/**
+ * [ActivityBarChart is a function that takes an array of objects as a prop and returns a bar chart]
+ * @prop   {Array}  userActivity  Data from a user to BarChart
+ *
+ * @return  {React.ReactElement} Bar Chart
+ *
+ */
 function ActivityBarChart({ userActivity }) {
   //prop userActivity est un tableau d'objets avec les propriétés jour, kilogramme et calories.
   console.log(userActivity);

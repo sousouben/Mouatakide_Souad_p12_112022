@@ -3,6 +3,11 @@ import logo from "../../../assets/logo/logo.png";
 import "./NavHorizontal.css";
 import { NavLink } from "react-router-dom";
 
+/**
+ * Horizontal navigation component
+ *
+ * @returns {JSX.Element} The horizontal navigation component
+ */
 function NavHorizontal() {
   return (
     <div className="horizon">

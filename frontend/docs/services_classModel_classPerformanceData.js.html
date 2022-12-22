@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/classModel/classPerformanceData.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/classModel/classPerformanceData.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * [PerformanceData Represents data for a user's performance.]
+ * @class
+ * @property {object} data - An object containing the user's performance data.
+ * @property {string} kind - The type of performance data being represented.
+ */
+class PerformanceData {
+  /**
+   * Creates a new PerformanceData object.
+   *
+   * @constructor
+   * @param {object} data - An object containing the user's performance data.
+   * @param {object} data.data - An object containing the user's performance data.
+   * @param {string} data.kind - The type of performance data being represented.
+   */
+  constructor(data) {
+    this.data = data.data;
+    this.kind = data.kind;
+  }
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export { PerformanceData };
+</code></pre>
+        </article>
+    </section>
 
 
 
