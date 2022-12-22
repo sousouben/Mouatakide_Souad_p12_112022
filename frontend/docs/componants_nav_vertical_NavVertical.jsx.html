@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/api/callApi.js</title>
+    <title>JSDoc: Source: componants/nav/vertical/NavVertical.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/api/callApi.js</h1>
+    <h1 class="page-title">Source: componants/nav/vertical/NavVertical.jsx</h1>
 
     
 
@@ -26,58 +26,69 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { ActivityData } from "../classModel/classActivityData";
-import { MainData } from "../classModel/ClassMainData";
-import { AverageSessionsData } from "../classModel/classAverageSessionsData";
-import { PerformanceData } from "../classModel/classPerformanceData";
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import Button from "./Button";
+import "./NavVertical.css";
+import yoga from "../../../assets/images/yoga.png";
+import natation from "../../../assets/images/natation.png";
+import velo from "../../../assets/images/velo.png";
+import altere from "../../../assets/images/alteres.png";
+import copy from "../../../assets/images/copiryght.png";
 import PropTypes from "prop-types";
 
-const url = "http://localhost:3000/user";
-console.log(url);
-
-//Ce code définit une fonction appelée getData qui envoie une requête HTTP à une URL spécifiée par la variable url.
-//La fonction prend deux arguments : id et categorie.
-
 /**
- * [getData Retrieves data for a user based on the specified ID and category.]
+ * Vertical navigation component
  *
- * @param {number} id - The ID of the user whose data should be retrieved.
- * @param {string} categorie - The category of data to retrieve.
- * @returns {Promise} A promise that resolves with the data for the user.
+ * @returns {JSX.Element} The vertical navigation component
  */
-const getData = async (id, categorie) => {
-  //Créez l'URL de la demande en fonction de l'ID et de la catégorie spécifiés.
-  let urlDemande = categorie ? `${url}/${id}/${categorie}/` : `${url}/${id}/`;
+function NavVertical() {
+  /**
+   * Meditation data management function
+   */
+  const handleGetMeditationData = () => {
+    console.log("yoga");
+  };
 
-  console.log(urlDemande);
-
-  const data = await fetch(urlDemande); //Récupérez les données de l'API.
-  console.log(data);
-
-  const dataFetch = await data.json(); //Analysez la réponse au format JSON.
-  console.log(dataFetch);
-
-  switch (
-    categorie //Déterminez le type d'objet de données à renvoyer en fonction de la catégorie.
-  ) {
-    case "activity":
-      return new ActivityData(dataFetch.data);
-    case "average-sessions":
-      return new AverageSessionsData(dataFetch.data);
-    case "performance":
-      return new PerformanceData(dataFetch.data);
-
-    default:
-      return new MainData(dataFetch.data); //Si aucune des instructions case ne correspond, la fonction renvoie un nouvel objet MainData.
+  /**
+   * Swimming data management function
+   */
+  function handleGetNatationData() {
+    console.log("natation");
   }
-};
 
-getData.propTypes = {
-  id: PropTypes.number.isRequired,
-  categorie: PropTypes.string,
-};
+  /**
+   * Cycling data management function
+   */
+  function handleGetCyclismeData() {
+    console.log("velo");
+  }
 
-export default getData;
+  /**
+   * Bodybuilding data management function
+   */
+  function handleGetMusculationData() {
+    console.log("altere");
+  }
+  return (
+    &lt;div className="vertical">
+      &lt;section className="navIcone">
+        &lt;Button srcImg={yoga} launch={handleGetMeditationData} />
+        &lt;Button srcImg={natation} launch={handleGetNatationData} />
+        &lt;Button srcImg={velo} launch={handleGetCyclismeData} />
+        &lt;Button srcImg={altere} launch={handleGetMusculationData} />
+      &lt;/section>
+      &lt;img className="copy" src={copy} alt="copiryght SportSee" />
+    &lt;/div>
+  );
+}
+
+NavVertical.propTypes = {
+  handleGetMeditationData: PropTypes.func,
+  handleGetNatationData: PropTypes.func,
+  handleGetCyclismeData: PropTypes.func,
+  handleGetMusculationData: PropTypes.func,
+};
+export default NavVertical;
 </code></pre>
         </article>
     </section>

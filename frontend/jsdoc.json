@@ -1,18 +1,22 @@
 {
-    "source": {
-      "include": ["src"],
-      "includePattern": ".js$",
-      "excludePattern": "(node_modules/|docs/|public)"
-    },
-    "plugins": ["plugins/markdown"],
-    "recurseDepth": 10,
-    "templates": {
-      "cleverLinks": true,
-      "monospaceLinks": true
-    },
-    "opts": {
-      "recurse": true,
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": ["./src"],
+    "includePattern": ".+\\.js(doc|x)?$"
+  },
+  "plugins": ["plugins/markdown"],    
+  "opts": {
       "encoding": "utf8",
-      "destination": "./docs/"
+      "destination": "docs/",
+      "recurse": true,
+      "verbose": true,
+      "readme": "./README.md"
+  },
+  "templates": {
+      "better-docs": {
+        "name": "SportSee doc"
+      }
     }
-  }
+}

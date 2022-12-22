@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 /**
  * [MainData Represents data for a user's main data.]
  *
@@ -35,5 +37,23 @@ class MainData {
     this.lipide = data.keyData.lipidCount;
   }
 }
+
+MainData.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userInfos: PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
+    }).isRequired,
+    todayScore: PropTypes.number,
+    keyData: PropTypes.shape({
+      calorieCount: PropTypes.number.isRequired,
+      proteinCount: PropTypes.number.isRequired,
+      carbohydrateCount: PropTypes.number.isRequired,
+      lipidCount: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export { MainData };

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 /**
  * [AverageSessionsData Represents data for a user's average session length.]
  *
@@ -23,5 +24,15 @@ class AverageSessionsData {
     this.session = data.sessions.sessionLength;
   }
 }
+
+AverageSessionsData.propTypes = {
+  data: PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    sessions: PropTypes.shape({
+      day: PropTypes.number.isRequired,
+      sessionLength: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export { AverageSessionsData };

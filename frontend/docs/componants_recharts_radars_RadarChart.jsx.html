@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/api/callApi.js</title>
+    <title>JSDoc: Source: componants/recharts/radars/RadarChart.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/api/callApi.js</h1>
+    <h1 class="page-title">Source: componants/recharts/radars/RadarChart.jsx</h1>
 
     
 
@@ -26,58 +26,86 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { ActivityData } from "../classModel/classActivityData";
-import { MainData } from "../classModel/ClassMainData";
-import { AverageSessionsData } from "../classModel/classAverageSessionsData";
-import { PerformanceData } from "../classModel/classPerformanceData";
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  ResponsiveContainer,
+} from "recharts";
 import PropTypes from "prop-types";
 
-const url = "http://localhost:3000/user";
-console.log(url);
-
-//Ce code définit une fonction appelée getData qui envoie une requête HTTP à une URL spécifiée par la variable url.
-//La fonction prend deux arguments : id et categorie.
+/**
+ * [perFormence is a function that returns a string based on a number]
+ * @param {number} kind
+ * @returns {string} a string corresponding to the number
+ */
+function perFormence(kind) {
+  switch (kind) {
+    case 1:
+      return "cardio";
+    case 2:
+      return "energy";
+    case 3:
+      return "endurance";
+    case 4:
+      return "strength";
+    case 5:
+      return "speed";
+    case 6:
+      return "intensity";
+    default:
+      return null;
+  }
+}
 
 /**
- * [getData Retrieves data for a user based on the specified ID and category.]
- *
- * @param {number} id - The ID of the user whose data should be retrieved.
- * @param {string} categorie - The category of data to retrieve.
- * @returns {Promise} A promise that resolves with the data for the user.
+ * Renders a radar chart showing user performance data.
+ * @param {Object[]} userPerformance - An array of objects representing the data for the chart.
+ * @returns {React.ReactElement} A radar chart.
  */
-const getData = async (id, categorie) => {
-  //Créez l'URL de la demande en fonction de l'ID et de la catégorie spécifiés.
-  let urlDemande = categorie ? `${url}/${id}/${categorie}/` : `${url}/${id}/`;
+function ActivityRadarChart({ userPerformance }) {
+  //prop userPerformance tableau d'objets représentant les données du graphique.
+  return (
+    &lt;ResponsiveContainer>
+      &lt;RadarChart //graphique radar
+        margin={{ top: 30, right: 30, bottom: 30, left: 70 }}
+        style={{ backgroundColor: "#282D30", borderRadius: "5px" }} //couleur d'arrière-plan et le rayon de la bordure du graphique
+        data={userPerformance}
+      >
+        &lt;PolarGrid radialLines={false} />
+        {/*dessine des lignes de grille*/}
+        &lt;PolarAngleAxis
+          dataKey="kind"
+          tickFormatter={perFormence}
+          tickLine={false}
+          axisLine={false}
+          dy={5}
+          stroke="#FFF"
+          tick={{ fill: "#FFFFFF", fontSize: 12 }}
+        />
+        {/*dessiner les axes du graphique*/}
 
-  console.log(urlDemande);
+        &lt;PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
+        &lt;Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
+      &lt;/RadarChart>
+    &lt;/ResponsiveContainer>
+  );
+}
 
-  const data = await fetch(urlDemande); //Récupérez les données de l'API.
-  console.log(data);
-
-  const dataFetch = await data.json(); //Analysez la réponse au format JSON.
-  console.log(dataFetch);
-
-  switch (
-    categorie //Déterminez le type d'objet de données à renvoyer en fonction de la catégorie.
-  ) {
-    case "activity":
-      return new ActivityData(dataFetch.data);
-    case "average-sessions":
-      return new AverageSessionsData(dataFetch.data);
-    case "performance":
-      return new PerformanceData(dataFetch.data);
-
-    default:
-      return new MainData(dataFetch.data); //Si aucune des instructions case ne correspond, la fonction renvoie un nouvel objet MainData.
-  }
+//Proptypes
+ActivityRadarChart.propTypes = {
+  userPerformance: PropTypes.arrayOf(
+    PropTypes.shape({
+      kind: PropTypes.number.isRequired,
+      value: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
-getData.propTypes = {
-  id: PropTypes.number.isRequired,
-  categorie: PropTypes.string,
-};
-
-export default getData;
+export default ActivityRadarChart;
 </code></pre>
         </article>
     </section>

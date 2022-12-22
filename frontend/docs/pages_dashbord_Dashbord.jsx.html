@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/dashbord/Dashbord.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/dashbord/Dashbord.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from "react";
+import { useParams, Navigate } from "react-router-dom";
+//styles css
+import "./Dashbord.css";
+//icones
+import calories from "../../assets/images/calories-icon.png";
+import proteines from "../../assets/images/protein-icon.png";
+import glucides from "../../assets/images/carbs-icon.png";
+import lipides from "../../assets/images/fat-icon.png";
+//graphiques
+import ActivityBarChart from "../../componants/recharts/activity/BarChart";
+import ActivityRadarChart from "../../componants/recharts/radars/RadarChart";
+import ActivityRadialBarChart from "../../componants/recharts/score/RadialBarChart";
+import ActivitySession from "../../componants/recharts/session/Session";
+import NavVertical from "../../componants/nav/vertical/NavVertical";
+
+import dataUser from "../../services/api/ApiMock";
+//import dataUser from "../../services/api/callApi";
+
+import PropTypes from "prop-types";
+
+function Profil() {
+  const { id } = useParams();
+  console.log(id); //useParams permet d'obtenir le paramètre id de l'URL.
+  const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
+  //useState créer des variables d'état qui seront utilisées pour stocker des données sur l'utilisateur, son activité, ses sessions et ses performances.
+  const [userMain, setUserMain] = useState();
+  const [userActivity, setUserActivity] = useState();
+  const [userSessions, setUserSessions] = useState();
+  const [userPerformance, setUserPerformance] = useState();
+
+  /**
+   *
+   * [handleError Function that handles errors returned by the dataUser function]
+   * @param {Error} error - The error returned by dataUser
+   */
+  function handleError(error) {
+    console.log("erreur données id", error);
+    return &lt;Navigate to="/Error">&lt;/Navigate>;
+  }
+  useEffect(() => {
+    //useEffect appele la fonction dataUser avec l'identifiant de l'utilisateur et récupérer des données sur l'utilisateur, son activité, ses sessions et ses performances.
+    dataUser(id)
+      /**
+       * [dataUser Function that allows retrieving user data with user id]
+       * @param {number} id - User ID
+       * @param {string} categorie - The category of data to recover (optional)
+       * @return {Promise} A promise that resolves with user data or rejects with an error on failure
+       */
+      .then((data) => {
+        if (typeof data !== "undefined") {
+          //Ces données sont ensuite stockées dans les variables d'état respectives à l'aide des fonctions setUserMain, setUserActivity, setUserSessions et setUserPerformance.
+          setUserMain(data);
+
+          dataUser(id, "activity")
+            .then((data) => setUserActivity(data))
+            .catch((error) => console.log("erreur activity", error));
+
+          dataUser(id, "average-sessions")
+            .then((data) => setUserSessions(data))
+            .catch((error) => console.log("erreur sessions", error));
+
+          dataUser(id, "performance")
+            .then((data) => setUserPerformance(data))
+            .catch((error) => console.log("erreur performance", error));
+        } else {
+          console.log(id);
+          return &lt;Navigate to="/Error">&lt;/Navigate>;
+        }
+      })
+      .catch((error) => handleError(error));
+  }, [id, categorie]); //récupérer les données de l'utilisateur
+
+  if (!userMain || !userActivity || !userSessions || !userPerformance) {
+    return null;
+  }
+
+  /**
+   * [hourOfTheDay Function that returns the current time of day]
+   * @return {number} L'heure actuelle de la journée (entre 0 et 23)
+   */
+  function hourOfTheDay() {
+    return new Date().getHours();
+  }
+
+  /**
+   * [renderSalut Function that returns a greeting based on the time of day]
+   * @return {string} A greeting according to the time of day: 'Good morning' if the time is less than 5 p.m. and greater than 5 a.m., 'Good evening' otherwise
+   */
+  function renderSalut() {
+    const hour = hourOfTheDay();
+    if (hour >= 17 || hour &lt; 5) {
+      return "Bonsoir";
+    }
+    return "Bonjour";
+  }
+  const salutation = renderSalut();
+  return (
+    &lt;>
+      &lt;NavVertical />
+      &lt;div className="pageProfil">
+        &lt;div className="bonjour">
+          &lt;h1>
+            {salutation} &lt;span>{userMain.firstName}&lt;/span>
+          &lt;/h1>
+          &lt;p>Félicitation! Vous avez explosé vos objectifs hier 👏&lt;/p>
+        &lt;/div>
+
+        &lt;div className="graphiques">
+          &lt;section className="horizonGauche">
+            &lt;div className="activity">
+              &lt;ActivityBarChart userActivity={userActivity.sessions} />
+            &lt;/div>
+            &lt;div className="carre">
+              &lt;div className="sessions">
+                &lt;ActivitySession userSessions={userSessions.sessions} />
+              &lt;/div>
+
+              &lt;div className="performance">
+                &lt;ActivityRadarChart userPerformance={userPerformance.data} />
+              &lt;/div>
+
+              &lt;div className="score">
+                &lt;ActivityRadialBarChart userMain={userMain.todayScore * 100} />
+              &lt;/div>
+            &lt;/div>
+          &lt;/section>
+          &lt;section className="iconDroite">
+            &lt;div className="calories">
+              &lt;img src={calories} alt="icon calorie" />
+              &lt;div className="infos">
+                &lt;h3>{userMain.calorie}kCal&lt;/h3>
+                &lt;p>Calories&lt;/p>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="proteines">
+              &lt;img src={proteines} alt="icon proteine" />
+              &lt;div className="infos">
+                &lt;h3>{userMain.proteine}g&lt;/h3>
+                &lt;p>Proteines&lt;/p>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="glucides">
+              &lt;img src={glucides} alt="icone glucide" />
+              &lt;div className="infos">
+                &lt;h3>{userMain.glucide}g&lt;/h3>
+                &lt;p>Glucides&lt;/p>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="lipides">
+              &lt;img src={lipides} alt="icon lipide" />
+              &lt;div className="infos">
+                &lt;h3>{userMain.lipide}g&lt;/h3>
+                &lt;p>Lipides&lt;/p>
+              &lt;/div>
+            &lt;/div>
+          &lt;/section>
+        &lt;/div>
+      &lt;/div>
+    &lt;/>
+  );
+}
+
+Profil.propTypes = {
+  id: PropTypes.number.isRequired, // id est un nombre requis
+  categorie: PropTypes.string, // categorie est une chaîne de caractères (optionnelle)
+  userMain: PropTypes.object.isRequired, // userMain est un objet requis
+  userActivity: PropTypes.array.isRequired, // userActivity est un tableau requis d'objets
+  userSessions: PropTypes.array.isRequired, // userSessions est un tableau requis d'objets
+  userPerformance: PropTypes.array.isRequired, // userPerformance est un tableau requis d'objets
+};
+
+export default Profil;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActivityData.html">ActivityData</a></li><li><a href="AverageSessionsData.html">AverageSessionsData</a></li><li><a href="MainData.html">MainData</a></li><li><a href="PerformanceData.html">PerformanceData</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ActivityRadarChart">ActivityRadarChart</a></li><li><a href="global.html#ActivityRadialBarChart">ActivityRadialBarChart</a></li><li><a href="global.html#ActivitySession">ActivitySession</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#customTickDay">customTickDay</a></li><li><a href="global.html#customTickKg">customTickKg</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#CustomTooltipisafunctionthatreturnsaredframewiththedatacontainedinit">CustomTooltip is a function that returns a red frame with the data contained in it</a></li><li><a href="global.html#daySemaine">daySemaine</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserMainData">getUserMainData</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#NavHorizontal">NavHorizontal</a></li><li><a href="global.html#NavVertical">NavVertical</a></li><li><a href="global.html#perFormence">perFormence</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Thu Dec 22 2022 13:59:41 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

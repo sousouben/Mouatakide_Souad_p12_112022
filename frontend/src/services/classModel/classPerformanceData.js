@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 /**
  * [PerformanceData Represents data for a user's performance.]
  * @class
@@ -18,5 +20,12 @@ class PerformanceData {
     this.kind = data.kind;
   }
 }
+
+PerformanceData.propTypes = {
+  data: PropTypes.shape({
+    data: PropTypes.object.isRequired,
+    kind: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export { PerformanceData };

@@ -14,13 +14,14 @@ import ActivityRadialBarChart from "../../componants/recharts/score/RadialBarCha
 import ActivitySession from "../../componants/recharts/session/Session";
 import NavVertical from "../../componants/nav/vertical/NavVertical";
 
-//import dataUser from "../../services/api/ApiMock";
-import dataUser from "../../services/api/callApi";
+import dataUser from "../../services/api/ApiMock";
+//import dataUser from "../../services/api/callApi";
 
 import PropTypes from "prop-types";
 
 function Profil() {
-  const { id } = useParams(); //useParams permet d'obtenir le paramètre id de l'URL.
+  const { id } = useParams();
+  console.log(id); //useParams permet d'obtenir le paramètre id de l'URL.
   const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
   //useState créer des variables d'état qui seront utilisées pour stocker des données sur l'utilisateur, son activité, ses sessions et ses performances.
   const [userMain, setUserMain] = useState();
@@ -63,6 +64,7 @@ function Profil() {
             .then((data) => setUserPerformance(data))
             .catch((error) => console.log("erreur performance", error));
         } else {
+          console.log(id);
           return <Navigate to="/Error"></Navigate>;
         }
       })

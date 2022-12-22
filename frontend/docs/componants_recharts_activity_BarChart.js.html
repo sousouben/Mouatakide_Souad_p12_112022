@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: componants/recharts/activity/BarChart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: componants/recharts/activity/BarChart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import {
   BarChart,
   Bar,
@@ -21,10 +49,10 @@ import PropTypes from "prop-types";
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
     return (
-      <div className="customTooltip">
-        <p className="tooltipData">{`${payload[0].value} `}g</p>
-        <p className="tooltipData">{`${payload[1].value} `}Kcal</p>
-      </div>
+      &lt;div className="customTooltip">
+        &lt;p className="tooltipData">{`${payload[0].value} `}g&lt;/p>
+        &lt;p className="tooltipData">{`${payload[1].value} `}Kcal&lt;/p>
+      &lt;/div>
     );
   }
   return null;
@@ -60,8 +88,8 @@ const customTickKg = (kilogram) => {
 function ActivityBarChart({ userActivity }) {
   console.log(userActivity);
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart //graphique à barres
+    &lt;ResponsiveContainer width="100%" height="100%">
+      &lt;BarChart //graphique à barres
         data={userActivity}
         margin={{
           top: 80,
@@ -72,8 +100,8 @@ function ActivityBarChart({ userActivity }) {
         barSize={7} //epaisseur de la barre
         barGap={6} //espace entre chaque barre
       >
-        <CartesianGrid strokeDasharray="2 2" vertical={false} />
-        <XAxis //axe des x
+        &lt;CartesianGrid strokeDasharray="2 2" vertical={false} />
+        &lt;XAxis //axe des x
           dataKey={"day"}
           axisLine={false}
           domain={["dataMin + 1", "dataMax + 1"]}
@@ -81,7 +109,7 @@ function ActivityBarChart({ userActivity }) {
           tickFormatter={customTickDay}
         />
         {/*concerne les dates*/}
-        <YAxis //axe des y
+        &lt;YAxis //axe des y
           hide
           tickLine={false}
           orientation="right"
@@ -93,7 +121,7 @@ function ActivityBarChart({ userActivity }) {
           domain={["dataMin + 1", "dataMax + 1"]}
           tickFormatter={customTickKg}
         />
-        <YAxis
+        &lt;YAxis
           dataKey={"calories"}
           tickFormatter={customTickKg}
           orientation="right"
@@ -101,8 +129,8 @@ function ActivityBarChart({ userActivity }) {
           tickLine={false}
         />
         {/*concerne les valeurs y*/}
-        <Tooltip
-          content={<CustomTooltip />}
+        &lt;Tooltip
+          content={&lt;CustomTooltip />}
           labelStyle={{
             display: "none",
           }}
@@ -119,7 +147,7 @@ function ActivityBarChart({ userActivity }) {
           margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
         />
         {/*CustomTooltip est utilisé pour personnaliser l'apparence de l'info-bulle qui apparaît lors du survol d'une barre dans le graphique.*/}
-        <Legend
+        &lt;Legend
           className="activityLegend"
           verticalAlign="top"
           align="right"
@@ -130,28 +158,28 @@ function ActivityBarChart({ userActivity }) {
           wrapperStyle={{ top: 35, right: 26 }}
           formatter={(value) => {
             return (
-              <span style={{ color: "#74798C", fontSize: 14, fontWeight: 500 }}>
+              &lt;span style={{ color: "#74798C", fontSize: 14, fontWeight: 500 }}>
                 {value}
-              </span>
+              &lt;/span>
             );
           }}
         />
         {/*concerne les légendes*/}
-        <Bar
+        &lt;Bar
           dataKey="kilogram"
           name="Poids (kg)"
           fill="#282D30"
           radius={[4, 4, 0, 0]}
         />
         {/*concerne les barres des kilos*/}
-        <Bar
+        &lt;Bar
           dataKey="calories"
           name="Calories brûlées (kCal)"
           fill="#E60000"
           radius={[4, 4, 0, 0]}
         />
         {/*concerne les barres des calories*/}
-        <text
+        &lt;text
           className="graphTitle"
           x="5%"
           y="15%"
@@ -163,10 +191,10 @@ function ActivityBarChart({ userActivity }) {
           style={{ fontWeight: 500 }}
         >
           Activité quotidienne{" "}
-        </text>
+        &lt;/text>
         {/*concerne le titre*/}
-      </BarChart>
-    </ResponsiveContainer>
+      &lt;/BarChart>
+    &lt;/ResponsiveContainer>
   );
 }
 
@@ -182,3 +210,26 @@ ActivityBarChart.propTypes = {
 };
 
 export default ActivityBarChart;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActivityData.html">ActivityData</a></li><li><a href="AverageSessionsData.html">AverageSessionsData</a></li><li><a href="MainData.html">MainData</a></li><li><a href="PerformanceData.html">PerformanceData</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ActivityRadarChart">ActivityRadarChart</a></li><li><a href="global.html#ActivityRadialBarChart">ActivityRadialBarChart</a></li><li><a href="global.html#ActivitySession">ActivitySession</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#customTickDay">customTickDay</a></li><li><a href="global.html#customTickKg">customTickKg</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#CustomTooltipisafunctionthatreturnsaredframewiththedatacontainedinit">CustomTooltip is a function that returns a red frame with the data contained in it</a></li><li><a href="global.html#daySemaine">daySemaine</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserMainData">getUserMainData</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#NavHorizontal">NavHorizontal</a></li><li><a href="global.html#NavVertical">NavVertical</a></li><li><a href="global.html#perFormence">perFormence</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Thu Dec 22 2022 13:59:21 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
