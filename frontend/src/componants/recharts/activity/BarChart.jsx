@@ -31,7 +31,9 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 /**
- * customTickDay is a function that returns the last two characters of the day string as a number
+ * @function customTickDay
+ *
+ * [is a function that returns the last two characters of the day string as a number]
  * @param {string} day - a string representing a day
  * @returns {number} the last two characters of the day string as a number
  */

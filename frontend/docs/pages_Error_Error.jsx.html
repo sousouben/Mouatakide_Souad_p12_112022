@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/api/callApi.js</title>
+    <title>JSDoc: Source: pages/Error/Error.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/api/callApi.js</h1>
+    <h1 class="page-title">Source: pages/Error/Error.jsx</h1>
 
     
 
@@ -26,58 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { ActivityData } from "../classModel/classActivityData";
-import { MainData } from "../classModel/ClassMainData";
-import { AverageSessionsData } from "../classModel/classAverageSessionsData";
-import { PerformanceData } from "../classModel/classPerformanceData";
-import PropTypes from "prop-types";
-
-const url = "http://localhost:3000/user";
-//console.log(url);
-
-//Ce code définit une fonction appelée getData qui envoie une requête HTTP à une URL spécifiée par la variable url.
-//La fonction prend deux arguments : id et categorie.
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { Link } from "react-router-dom";
+import "./Error.css";
 
 /**
- * [getData Retrieves data for a user based on the specified ID and category.]
- *
- * @param {number} id - The ID of the user whose data should be retrieved.
- * @param {string} categorie - The category of data to retrieve.
- * @returns {Promise} A promise that resolves with the data for the user.
+ * A functional component for displaying an error message.
+ * @returns {JSX} The JSX for displaying the error message and a link to the home page.
  */
-const getData = async (id, categorie) => {
-  //Créez l'URL de la demande en fonction de l'ID et de la catégorie spécifiés.
-  let urlDemande = categorie ? `${url}/${id}/${categorie}/` : `${url}/${id}/`;
-
-  console.log(urlDemande);
-
-  const data = await fetch(urlDemande); //Récupérez les données de l'API.
-  console.log(data);
-
-  const dataFetch = await data.json(); //Analysez la réponse au format JSON.
-  console.log(dataFetch);
-
-  switch (
-    categorie //Déterminez le type d'objet de données à renvoyer en fonction de la catégorie.
-  ) {
-    case "activity":
-      return new ActivityData(dataFetch.data);
-    case "average-sessions":
-      return new AverageSessionsData(dataFetch.data);
-    case "performance":
-      return new PerformanceData(dataFetch.data);
-
-    default:
-      return new MainData(dataFetch.data); //Si aucune des instructions case ne correspond, la fonction renvoie un nouvel objet MainData.
-  }
+const Error = () => {
+  return (
+    &lt;div className="error">
+      &lt;h1>404&lt;/h1>
+      &lt;span>Oups! La page que vous demandez n'existe pas.&lt;/span>
+      &lt;Link to="/home" className="error-link">
+        Retour à la page d'Accueil
+      &lt;/Link>
+    &lt;/div>
+  );
 };
 
-getData.propTypes = {
-  id: PropTypes.number.isRequired,
-  categorie: PropTypes.string,
-};
-
-export default getData;
+export default Error;
 </code></pre>
         </article>
     </section>

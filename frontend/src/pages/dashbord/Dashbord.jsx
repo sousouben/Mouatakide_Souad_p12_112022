@@ -14,11 +14,26 @@ import ActivityRadialBarChart from "../../componants/recharts/score/RadialBarCha
 import ActivitySession from "../../componants/recharts/session/Session";
 import NavVertical from "../../componants/nav/vertical/NavVertical";
 
-import dataUser from "../../services/api/ApiMock";
-//import dataUser from "../../services/api/callApi";
+//import dataUser from "../../services/api/ApiMock";
+import dataUser from "../../services/api/callApi";
 
 import PropTypes from "prop-types";
 
+/** *
+ * @function Profil
+ *
+ * [A function that fetches and displays user data.]
+ *
+ * @param {number} id - The user's ID.
+ * @param {string} categorie - The category of data to retrieve (optional).
+ * @param {function} useParams - A hook for accessing URL parameters.
+ * @param {function} useState - A hook for creating state variables.
+ * @param {function} useEffect - A hook for performing side effects in a functional component.
+ * @param {function} useNavigate - A hook for navigating to a different page.
+ * @returns {null} If user data is not yet available.
+ * @returns {JSX} The JSX for displaying the user's main data, activity data, session data, and performance data.
+ *
+ */
 function Profil() {
   const { id } = useParams(); //useParams permet d'obtenir le paramètre id de l'URL.
   const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
