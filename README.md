@@ -30,8 +30,8 @@ npm install
 
   is recommanded to run charts correctly
 
-- Recharts
-- VsCode
+- [Recharts](https://www.npmjs.com/package/recharts)
+- [VsCode](https://code.visualstudio.com/download)
 
 ## Installing the app
 
