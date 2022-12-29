@@ -1,3 +1,15 @@
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+
+---
+
+![logo](src/assets/logo/logo.png)
+
 ## Presentation
 
 SportSee project is an application for sportive people that want to follow their daily progress through analytics dashboard.
@@ -9,17 +21,46 @@ npm install
 
 ## Installing the app
 
+- Clone the repo on your computer.
+
+```bash
 clone the repository : https://github.com/sousouben/Mouatakide_Souad_p12_112022.git
+```
+
+- Package installations after cloning.
+
+```bash
+# with NPM
+npm install
+# with Yarn
+yarn
+```
+
+- Start the application
+
+```bash
+npm run start
+# or
+npm start
+# with Yarn
+yarn start
+```
+
+- You can generate jsdoc after cloning.
+
+```bash
+npm run doc
+```
 
 ### Backend
 
-    Open a new terminal and run cd Backend command
-    Then run the npm run start command the backend will open http://localhost:3000
+    Open a new terminal and run 'cd Backend' command
+    Then run the 'npm run start' command the backend will open http://localhost:3000
 
 ### FrontEnd
 
-    Open a new terminal and run cd frontend
-    Then run the npm start command will allow you to run the application on http://localhost:3001
+    Open a new terminal and run 'cd frontend'
+    Then run the 'npm start' command will allow you to run the application on http://localhost:3001
 
     Getting Started with Create React App
 
