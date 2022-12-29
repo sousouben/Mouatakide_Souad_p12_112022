@@ -23,6 +23,16 @@ SportSee project is an application for sportive people that want to follow their
 Run the npm command will allow you to install the dependencies
 npm install
 
+- [NodeJS](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/)
+- [REACT](https://en.reactjs.org/)
+
+  is recommanded to run charts correctly
+
+- Recharts
+- VsCode
+
 ## Installing the app
 
 - Clone the repo on your computer.
