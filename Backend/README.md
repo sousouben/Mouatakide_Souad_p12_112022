@@ -6,7 +6,7 @@
 
 ---
 
-![logo](frontend/src/assets/logo/logo.png)
+![logo](/frontend/src/assets/logo/logo.png)
 
 ---
 
