@@ -6,6 +6,10 @@
 
 ---
 
+![logo](frontend/src/assets/logo/logo.png)
+
+---
+
 This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.
 
 ## 1. General information
