@@ -98,7 +98,7 @@
   }
 
   .iconDroite {
-    width: 25%;
+    width: 100%;
     flex-direction: row;
     justify-content: unset;
     margin-left: 0;
@@ -129,6 +129,65 @@
   .infos {
     margin: auto;
     font-size: 12px;
+  }
+  .horizonGauche {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 412px) and (max-width: 780px) {
+  .bonjour h1 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .bonjour p {
+    font-size: 12px;
+  }
+  .pageProfil {
+    margin-left: 125px;
+    margin-top: -858px;
+    width: 70%;
+  }
+  .sessions,
+  .performance,
+  .score {
+    width: 31%;
+    height: 170px;
+    border-radius: 5px;
+  }
+  .iconDroite {
+    width: 25%;
+    flex-direction: row;
+    justify-content: unset;
+    margin-left: 0;
+    height: 0;
+  }
+  .graphiques {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+  }
+  .calories,
+  .proteines,
+  .glucides,
+  .lipides {
+    padding-left: 0;
+    flex-direction: column;
+    height: 111px;
+  }
+  .calories img,
+  .proteines img,
+  .glucides img,
+  .lipides img {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 13px;
+  }
+  .infos {
+    margin: auto;
+    font-size: 10px;
   }
   .horizonGauche {
     width: 100%;

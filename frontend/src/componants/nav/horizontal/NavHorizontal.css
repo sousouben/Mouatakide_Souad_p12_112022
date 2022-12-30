@@ -48,3 +48,16 @@ nav ul {
     width: 100%;
   }
 }
+@media screen and (min-width: 412px) and (max-width: 780px) {
+  .horizon {
+    height: 60px;
+  }
+  .horizon img {
+    width: 150px;
+    height: 35.93px;
+    margin-left: 13px;
+  }
+  nav {
+    font-size: 10px;
+  }
+}
