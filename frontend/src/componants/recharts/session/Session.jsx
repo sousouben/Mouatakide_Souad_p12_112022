@@ -11,14 +11,6 @@ import {
 } from "recharts";
 import PropTypes from "prop-types";
 
-/**
- * [CustomTooltip Custom tooltip component]
- *
- * @param {Object} props Component properties
- * @param {Boolean} props.active Boolean that determines if the tooltip should be displayed or not
- * @param {Object[]} props.payload Array of data objects containing the values ​​to display in the tooltip
- * @returns {JSX.Element} The custom tooltip component
- */
 const CustomTooltip = ({ active, payload }) => {
   if (active) {
     return (

@@ -62,13 +62,6 @@ function getUserPerformance(id) {
   return userPerformance;
 }
 
-/**
- * [getData Retrieves data for a user based on the specified ID and category.]
- *
- * @param {number} id - The ID of the user whose data should be retrieved.
- * @param {string} categorie - The category of data to retrieve.
- * @returns {Promise} A promise that resolves with the data for the user.
- */
 const getData = async (id, categorie) => {
   //async renvoie une promesse
   switch (categorie) {

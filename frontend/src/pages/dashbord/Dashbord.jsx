@@ -14,15 +14,13 @@ import ActivityRadialBarChart from "../../componants/recharts/score/RadialBarCha
 import ActivitySession from "../../componants/recharts/session/Session";
 import NavVertical from "../../componants/nav/vertical/NavVertical";
 
-//import dataUser from "../../services/api/ApiMock";
-import dataUser from "../../services/api/callApi";
+import dataUser from "../../services/api/ApiMock";
+//import dataUser from "../../services/api/callApi";
 
 import PropTypes from "prop-types";
 
 /** *
- * @function Profil
- *
- * [A function that fetches and displays user data.]
+ * [Dashbord is A function that fetches and displays user data.]
  *
  * @param {number} id - The user's ID.
  * @param {string} categorie - The category of data to retrieve (optional).
@@ -34,7 +32,7 @@ import PropTypes from "prop-types";
  * @returns {JSX} The JSX for displaying the user's main data, activity data, session data, and performance data.
  *
  */
-function Profil() {
+function Dashbord() {
   const { id } = useParams(); //useParams permet d'obtenir le paramètre id de l'URL.
   const { categorie } = useParams(); //useParams permet d'obtenir le paramètre categorie de l'URL.
   //useState créer des variables d'état qui seront utilisées pour stocker des données sur l'utilisateur, son activité, ses sessions et ses performances.
@@ -55,7 +53,7 @@ function Profil() {
     const fetchData = () => {
       try {
         if (id === "12" || id === "18") {
-          dataUser(id)
+          dataUser(id, categorie)
             .then((data) => {
               if (typeof data !== "undefined") {
                 try {
@@ -218,7 +216,7 @@ function Profil() {
   );
 }
 
-Profil.propTypes = {
+Dashbord.propTypes = {
   id: PropTypes.number.isRequired, // id est un nombre requis
   categorie: PropTypes.string, // categorie est une chaîne de caractères (optionnelle)
   userMain: PropTypes.object.isRequired, // userMain est un objet requis
@@ -227,4 +225,4 @@ Profil.propTypes = {
   userPerformance: PropTypes.array.isRequired, // userPerformance est un tableau requis d'objets
 };
 
-export default Profil;
+export default Dashbord;

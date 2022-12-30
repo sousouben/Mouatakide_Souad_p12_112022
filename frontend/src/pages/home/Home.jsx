@@ -4,7 +4,7 @@ import accueil from "../../assets/images/accueil.jpg";
 const Home = () => {
   return (
     <main className="reglage_img">
-      <img src={accueil} alt="Image de la page d'accueil" />
+      <img src={accueil} alt="Page d'accueil" />
     </main>
   );
 };

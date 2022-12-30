@@ -12,7 +12,7 @@ import {
 import PropTypes from "prop-types";
 
 /**
- * @function CustomTooltip is a function that returns a red frame with the data contained in it
+ * [CustomTooltip is a function that returns a red frame with the data contained in it]
  * @param {Object} props containing active and payload
  * @param {boolean} active indicates whether the tooltip should be displayed or not
  * @param {array} payload an array of data objects containing the values to be displayed in the tooltip
@@ -31,9 +31,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 /**
- * @function customTickDay
- *
- * [is a function that returns the last two characters of the day string as a number]
+ * [customTickDay is a function that returns the last two characters of the day string as a number]
  * @param {string} day - a string representing a day
  * @returns {number} the last two characters of the day string as a number
  */
