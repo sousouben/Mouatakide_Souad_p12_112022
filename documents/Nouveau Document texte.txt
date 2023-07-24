@@ -1,0 +1,9 @@
+
+Maquette
+https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?type=design&node-id=0-1&mode=design
+
+kanban avec les User Stories
+https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e
+
+ backend utilisant NodeJS
+https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
